@@ -26,7 +26,7 @@ provider "shell" {
     AzureClientSecret = var.client_secret
   }
 
-  interpreter = ["pwsh", "-command"]
+  interpreter = ["pwsh", "-Command"]
 }
 
 module "webapp_data" {
