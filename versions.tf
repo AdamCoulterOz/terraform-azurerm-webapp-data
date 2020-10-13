@@ -7,17 +7,3 @@ terraform {
     }
   }
 }
-
-provider "shell" {
-  environment = {
-    AzureClientId     = var.client_id
-    AzureTenantId     = var.tenant_id
-    AzureSubscription = var.subscription_id
-  }
-
-  sensitive_environment = {
-    AzureClientSecret = var.client_secret
-  }
-
-  interpreter = ["pwsh", "-command"]
-}

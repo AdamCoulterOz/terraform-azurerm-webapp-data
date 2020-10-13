@@ -15,12 +15,22 @@ Install-Module "AzureHelpers"
 ## Usage Example
 
 ```terraform
+provider "shell" {
+  environment = {
+    AzureClientId     = var.client_id
+    AzureTenantId     = var.tenant_id
+    AzureSubscription = var.subscription_id
+  }
+
+  sensitive_environment = {
+    AzureClientSecret = var.client_secret
+  }
+
+  interpreter = ["pwsh", "-command"]
+}
+
 module "webapp_data" {
   source            = "AdamCoulterOz/webappdata/azurerm"
   web_app_id        = "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/myrg/providers/Microsoft.Web/sites/mywebapp"
-  client_id         = "00000000-0000-0000-0000-000000000002"
-  client_secret     = "abc123"
-  tenant_id         = "00000000-0000-0000-0000-000000000003"
-  subscription_id   = "00000000-0000-0000-0000-000000000001"
 }
 ```
